@@ -1,0 +1,52 @@
+version: "3"
+
+services : 
+  # frontend :  
+  #   build : 
+  #     context : .
+  #     dockerfile : /home/administrador/Documentos/Treinamento/dezembro/projetoRedeSocial/frontend.dockerfile
+  #   image: frontend/react
+  #   container_name : frontend
+  #   ports : 
+  #     - "3000:3000"
+  #   volumes :
+  #     - /home/administrador/Documentos/Treinamento/dezembro/projetoRedeSocial/frontend:/frontend
+  #   depends_on : 
+  #     - MYSQLDB
+  #   networks:
+  #     - rede
+
+  # backend :  
+  #   build : 
+  #     context : .
+  #     dockerfile : /home/administrador/Documentos/Treinamento/dezembro/projetoRedeSocial/backend.dockerfile
+  #   image: backend/node
+  #   container_name : backend
+  #   ports : 
+  #     - "3002:3001"
+  #   volumes :
+  #     - /home/administrador/Documentos/Treinamento/dezembro/projetoRedeSocial/backend:/backend
+  #   depends_on : 
+  #     - MYSQLDB
+  #   networks:
+  #     - redeBackEnd
+   
+  MYSQLDB:
+    image: mysql:5.7
+    container_name : BancoDeDados
+    environment:
+            MYSQL_ROOT_PASSWORD: root 
+    ports:
+      - "3306:3306"
+    networks:
+      - rede
+networks:
+  rede:
+    driver: bridge
+  redeBackEnd:
+    driver: bridge
+
+
+  
+
+ 
