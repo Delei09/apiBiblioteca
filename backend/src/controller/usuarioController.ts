@@ -1,6 +1,6 @@
 import UsuarioModel , { usuarioType  } from "../model/usuarioModel"
 import { Request , Response} from 'express'
-import ValidarSenha from "./validarSenha"
+import ValidarSenha from "../config/validacao/senha"
 import { Usuario } from "../database/model/usuario"
 
 const validarSenha = new ValidarSenha()
@@ -11,10 +11,12 @@ export default class UsuarioController {
     async adicionar(req : Request , res : Response){
         try{
             const usuario : usuarioType = req.body 
+            console.log(usuario)
             usuario.senha = await validarSenha.encriptografarSenha(usuario.senha)
             const resposta = await usuarioModel.adicionar(usuario)
             res.status(201).json(resposta)
         }catch(e){
+            console.log(e)
             res.status(400).json("Erro no servidor")
         }
         
@@ -76,7 +78,7 @@ export default class UsuarioController {
         try{
             const id = Number(req.params.id)
             const resposta = await usuarioModel.pegarUmUsuario(id)
-            res.status(400).json(resposta)
+            res.status(200).json(resposta)
 
         }catch(e){
             res.status(400).json("Erro no servidor")
@@ -86,7 +88,7 @@ export default class UsuarioController {
     async pegarTodos(req : Request , res : Response){
         try{
             const resposta = await usuarioModel.pegarTodos()
-            res.status(400).json(resposta)
+            res.status(200).json(resposta)
 
         }catch(e){
             res.status(400).json("Erro no servidor")

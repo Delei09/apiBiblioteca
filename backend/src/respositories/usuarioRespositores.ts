@@ -14,7 +14,6 @@ export default class UsuarioRepositories {
     }
 
     async atualizar(id : number , usuario : usuarioType){
-        console.log(usuario)
         const resposta = await Usuario.update( usuario , {
             where : {
                 id : id

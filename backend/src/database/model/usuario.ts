@@ -29,6 +29,13 @@ class Usuario extends Model {
   })
   senha! : String
 
+  @Column({
+    allowNull : true ,
+    type : DataType.STRING(500) ,
+    
+  })
+  refreshToken! : String
+
 }
 
 export {Usuario}
