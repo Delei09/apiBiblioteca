@@ -11,5 +11,6 @@ app.listen(porta, async () => {
         await  sequelize.sync()
     }catch(e){
         console.log(e)
+        
     } 
 })

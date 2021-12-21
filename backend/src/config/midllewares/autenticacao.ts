@@ -45,7 +45,7 @@ export default class autenticacao {
                 tokenModel.validar(token)
                 next()
             }catch(e){
-                throw 'Token Expirado!!!'
+                throw 'Token Expirado Ou Incorreto!!!'
             }
                 
         }catch(e){

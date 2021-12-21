@@ -16,33 +16,31 @@ services :
   #   networks:
   #     - rede
 
-  # backend :  
-  #   build : 
-  #     context : .
-  #     dockerfile : /home/administrador/Documentos/Treinamento/dezembro/projetoRedeSocial/backend.dockerfile
-  #   image: backend/node
-  #   container_name : backend
-  #   ports : 
-  #     - "3002:3001"
-  #   volumes :
-  #     - /home/administrador/Documentos/Treinamento/dezembro/projetoRedeSocial/backend:/backend
-  #   depends_on : 
-  #     - MYSQLDB
-  #   networks:
-  #     - redeBackEnd
+  BACKEND:  
+    build : 
+      context : .
+      dockerfile : /home/administrador/Documentos/Treinamento/dezembro/sequellize/projetoLivros/backend.dockerfile
+    image: backend/projetolivros
+    container_name : back-livro
+    ports : 
+      - "3001:3001"
+    volumes :
+      - /home/administrador/Documentos/Treinamento/dezembro/sequellize/projetoLivros/backend:/backend
+    depends_on : 
+      - MYSQLDB
+    networks:
+      - redeBackEnd
    
   MYSQLDB:
     image: mysql:5.7
-    container_name : BancoDeDados
+    container_name : BANCODEDADOS
     environment:
             MYSQL_ROOT_PASSWORD: root 
     ports:
       - "3306:3306"
     networks:
-      - rede
+      - redeBackEnd
 networks:
-  rede:
-    driver: bridge
   redeBackEnd:
     driver: bridge
 

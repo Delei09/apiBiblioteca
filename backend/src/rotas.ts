@@ -13,6 +13,7 @@ const tokenController = new TokenController()
 
 const Rotas = express.Router()
 
+
 Rotas.post('/usuario' , formularioMidlleware.cadastro , formularioMidlleware.emailExiste , (req : Request , res : Response ) => {
     usuarioController.adicionar(req , res)
 })
